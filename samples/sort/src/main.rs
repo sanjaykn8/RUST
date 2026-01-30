@@ -1,15 +1,20 @@
 fn sort(mut arr: [u8; 5]) -> [u8; 5] {
-    for i in 1..arr.len() {
-        let key = arr[i];
-        let mut j = i;
+    for i in 0..5{
+        let mut min_index = i;
+        let mut j = i + 1;
 
-        while j > 0 && arr[j - 1] > key {
-            arr[j] = arr[j - 1];
-            j -= 1;
+        while j < arr.len() {
+            if arr[j] < arr[min_index] {
+                min_index = j;
+            }
+            j += 1;
         }
 
-        arr[j] = key;
+        let temp = arr[min_index];
+        arr[min_index] = arr[i];
+        arr[i] = temp;
     }
+
     arr
 }
 
